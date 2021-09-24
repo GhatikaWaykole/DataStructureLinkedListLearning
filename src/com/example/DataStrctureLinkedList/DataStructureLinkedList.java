@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /* linked list learing problem
  * create a node class and perform compute on the linked list
- * create a linked list and put the newnode after given position in the linked list.
+ * create a pop to the linked list at certain position in the linked list
  */
 public class DataStructureLinkedList {
     Scanner scanner = new Scanner(System.in);
@@ -46,7 +46,19 @@ public class DataStructureLinkedList {
             }
         //newNode point to ptr.next
         newNode.next = ptr.next;
-        ptr.next = newNode;           //ptr.next now point to the newnode
+        ptr.next = newNode;           //ptrNext now point to the newNode
+        }
+        //pop method to pop the node in the linked list
+        public void popNode(int data){
+        Node ptr = head;
+        Node last = head;
+        while(ptr.data != data){
+            last =ptr;
+            ptr = ptr.next;
+        }
+        //last node point to the prt next node
+           last.next = ptr.next;
+           ptr = null;             //make ptr node mull to pop in the linked list
         }
         //display the data to linked list
     public static void display(){
@@ -61,6 +73,7 @@ public class DataStructureLinkedList {
         if(node.next == null){
             System.out.print("->"+node.data);
         }
+        System.out.println();
     }
     public static void main(String args[]) {
         System.out.println("welcome to linked list");
@@ -69,10 +82,11 @@ public class DataStructureLinkedList {
         linkedList.addNode(56);
         linkedList.addNode(30);
         linkedList.addNode(70);
-        display();
-        System.out.println();
+        System.out.println("Enter the node after need to remove the data the linked list");
         linkedList.searchInsertNode(30);
         display();
-
+        System.out.println("Enter the node to the pop");
+        linkedList.popNode(40);
+        display();
     }
     }
